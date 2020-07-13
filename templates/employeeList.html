@@ -8,19 +8,25 @@
 
 {% if emp_count > 0 %}
 
+
+<!-- depending on the employee counter limit, generate a red highlighted row or a regular one -->
 <div class="w3-container">
   <h5 style="text-align:center;"><b>Employees in the office on this date:</b></h5>
   <ul class="w3-ul">
     {% for key, value in dict.items() %}
       {% if value | int > maxEmpCount %}
-        <li id="red"><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} 
+        <li id="red">
+          <span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> 
+          <div style="text-align:left;"> {{ key }} </div>
           <div style="text-align:center;">
             <span>The maximum number of employees in the office has been reached. </span>
           </div> 
         </li>
-
       {% else %}
-      <li><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} </li>
+      <li>
+        <span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> 
+        <div style="text-align:left;"> {{ key }} </div> 
+      </li>
       {% endif %}
     {% endfor %}
   </ul>

@@ -17,7 +17,7 @@ defaultDate = month + "-" + day
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "bF-xcay-xffp-x0bc--xb53xeaxfc8-xc8y-xcb-xe4"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///posts.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///employees.db"
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.login_view = 'login'

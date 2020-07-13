@@ -16,11 +16,16 @@ body {
 }
 
 .form-control {
-    text-align:  center;
+    text-align: center;
 }
 
 #red{
     background-color: #ee5858
+}
+
+#gif{
+    width: 850px;
+    height: auto;  
 }
 
 .form-signin {
@@ -31,6 +36,11 @@ body {
   }
 
 @media (max-width: 768px) {
+    #gif{
+        width: 300px;
+        height: auto;  
+    }
+    
     .btn{
         font-size:10px;
         padding:2px 4px;  
