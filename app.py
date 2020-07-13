@@ -91,7 +91,6 @@ def load_user(admin_id):
 
 @app.route("/login/login", methods=["GET", "POST"])
 def login():
-# the authentication was implemented folowing the tutorial wote by Anthony Herbert: https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
