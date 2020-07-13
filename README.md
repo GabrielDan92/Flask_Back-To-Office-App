@@ -9,10 +9,22 @@ And that's how the Back-To-Office App came into existence. :) <p>
 ## How did I built the app and what tools did I use?
 * Flask
   * Template inheritance
-  * Authentication: altough I spend a lot of time on Stack Overflow when I encountered a blocking point and I found great resources throughout the development phase, I must give credit where credit is due: Anthony Herbert's tutorial on  <a href="https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login">implementing authentication to Flask apps</a> was awesome and I can't recommend it highly enough.
-  * a lot of values being sent from the Back-End to the Front-End passed through ```<render_template>``` as arguments
-  * and many queries to the db
-* HTML, CSS, javaScript for the Front-End
+  * Authentication: altough I spend a lot of time on Stack Overflow when I encountered blocking points and I found great resources throughout the development phase, I must give credit where credit is due: Anthony Herbert's tutorial on  <a href="https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login">implementing authentication to Flask apps</a> was awesome and I can't recommend it highly enough.
+  * A lot of values being sent from the Back-End to the Front-End passed through ```<render_template>``` as arguments
+  * Python functions that initialize a blank database if it's not found when the servers starts, or create default values in the db (if the admin profile is not created already), just to prevent errors at run time
+* HTML, CSS and JavaScript for the Front-End part. Javascript was mostly used for changing div elements' sizes or even hide them based on particular actions done by the user
 * jQuery AJAX for ```POST``` requests
-* Bootstrap for almost all styling properties
-* W3.CSS for the employee tables
+* the Bootstrap framework for almost all styling properties
+* W3.CSS for the employee tables <p>
+
+### I've built the app with two user profile types in mind:
+* <b>End User</b> - the user experience should be as straightforward as it gets:
+  * Open the app
+  * Submit the presence day(s)
+  * Close the app
+  * *Optionally*: see all the other presence requests that have been submitted by now and find out how many employees will be in the office at a given date <p>
+  ![User](static/user.gif) <p>
+* <b>Admin</b> - after authentication (on top of the options that the end user has), the admin can also:
+  * Delete requests (one request at a time or all the requests at once with a press of a button)
+  * Modify the maximum number of employees that can be in the office at the same time <p>
+  ![Admin](static/admin.gif) <p>
