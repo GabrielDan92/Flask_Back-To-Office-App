@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Employee List</title>
+{% endblock %}
+
+{% block body %}
+
+{% if emp_count > 0 %}
+
+<div class="w3-container">
+  <h5 style="text-align:center;"><b>Employees in the office on this date:</b></h5>
+  <ul class="w3-ul">
+    {% for key, value in dict.items() %}
+      {% if value | int > maxEmpCount %}
+        <li id="red"><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} 
+          <div style="text-align:center;">
+            <span>The maximum number of employees in the office has been reached. </span>
+          </div> 
+        </li>
+
+      {% else %}
+      <li><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+  
+{% endif %}
+
+<main role="main">
+    <div class="jumbotron text-center mx-2 mb-3" style="background-color:#e3e3e3">
+        <div class="col-sm-8 mx-auto">
+            <h3>Employee List</h3>
+            <h6>{{ emp_count }} submitted employee requests</h6>
+            <hr class="my-4 pb-2">
+
+            <table class="table table-striped">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col"><h6>Name</h6></th>
+                    <th scope="col"><h6>Departament</h6></th>
+                    <th scope="col"><h6>Date</h6></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for emp in employees %}
+                  <tr>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.dept }}</td>
+                    <td>{{ emp.date }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            <hr class="my-4 pb-2">
+
+            {% block button %} 
+              <form action="/adminManagement">
+                <div class="mx-2 col-1">
+                    <input class="btn btn-success btn-sm" type="submit" value="Go back to Admin Management">
+                </div>
+              </form>
+            {% endblock %}
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}

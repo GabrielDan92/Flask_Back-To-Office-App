@@ -1,0 +1,28 @@
+{% extends "adminManagement.html" %}
+
+{% block head %}
+<title>User View</title>
+{% endblock %}
+
+{% block buttons %}
+<div class="col-12" id="alwaysOnMenu">
+    <div class="col-8 mx-auto">
+        <br>
+        <h3>User Management Dashboard</h3>
+        <hr class="my-4 pb-2">
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary btn-sm" onclick="visible()">Add a new presence day</button>
+        </div>
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/employeeListUser';">See all presence requests</button>
+        </div>
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-danger btn-sm" disabled>Max # of employees in the office - Current Limit: {{ maxEmpCount }}</button>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

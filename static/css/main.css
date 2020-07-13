@@ -1,0 +1,188 @@
+body {
+    font-family: Helvetica;
+    background-color: #f5f3f3;
+}
+
+/* #alwaysOnMenu{
+    transition: .2s;
+} */
+
+#bar{
+    background-color: #e0dfdf !important;
+}
+
+.jumbotron{
+    background-color: #e0dfdf !important;
+}
+
+.form-control {
+    text-align:  center;
+}
+
+#red{
+    background-color: #ee5858
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+@media (max-width: 768px) {
+    .btn{
+        font-size:10px;
+        padding:2px 4px;  
+        margin: 0px;
+    }
+    .form-control{
+        font-size:10px;
+        padding:2px 4px;  
+        margin: 0px;
+    }
+    #alwaysOnMenu h3{
+        font-size:12px;
+        padding:3px 5px;    
+    }
+    #userForm h3{
+        font-size:12px;
+        padding:3px 5px;    
+    }
+    #userForm label{
+        font-size:12px;
+        padding:3px 5px; 
+        margin: 0px;  
+    }
+    .jumbotron h3{
+        font-size:12px;
+        padding:3px 5px; 
+    }
+    .jumbotron h6{
+        font-size:12px;
+        padding:3px 5px; 
+    }
+    .jumbotron tbody{
+        font-size:12px;
+        padding:3px 5px; 
+    }
+    .w3-container{
+        font-size:12px;
+        padding:3px 5px; 
+    }
+    .table{
+        font-size:10px;
+        padding:1px 3px;  
+        margin: 0px;
+        border: 0px;
+    }
+    h5{
+        font-size:14px;
+    }
+    h6{
+        font-size:16px;
+        padding:1px 3px !important; 
+        margin: 1px !important;
+        border: 1px !important;
+    }
+    .table th{
+        font-size:12;
+        padding:2px 4px !important; 
+        margin: 2px !important;
+        border: 2px !important;
+    }
+    .table td{
+        padding:2px 4px; 
+        margin: 2px !important;
+        border: 2px !important;
+    }
+    .table tbody{
+        padding:2px 4px; 
+        margin: 2px !important;
+        border: 2px !important;
+    }
+}
+
+@media (max-width: 479px) {
+    .btn{
+        font-size:8px;
+        padding:1px 3px;  
+        margin: 0px;
+    }
+    .form-control{
+        font-size:8px;
+        padding:1px 3px;  
+        margin: 0px;
+    }
+    #alwaysOnMenu h3{
+        font-size:10px;
+        padding:2px 4px;    
+    }
+    #userForm h3{
+        font-size:10px;
+        padding:2px 4px;    
+    }
+    #userForm label{
+        font-size:10px;
+        padding:2px 4px; 
+        margin: 0px;  
+    }
+    .jumbotron h3{
+        font-size:10px;
+        padding:2px 4px; 
+    }
+    .jumbotron h6{
+        font-size:10px;
+        padding:2px 4px; 
+    }
+    .jumbotron tbody{
+        font-size:10px;
+        padding:2px 4px; 
+    }
+    .w3-container{
+        font-size:10px;
+        padding:2px 4px; 
+    }
+    .table{
+        font-size:10px;
+        padding:1px 3px;  
+        margin: 0px;
+        border: 0px;
+    }
+    h5{
+        font-size:10px;
+    }
+    h6{
+        font-size:12px;
+        padding:0px 1px !important; 
+        margin: 0px !important;
+        border: 0px !important;
+    }
+    .table th{
+        font-size:10;
+        padding:1px 3px !important; 
+        margin: 1px !important;
+        border: 1px !important;
+    }
+    .table td{
+        padding:1px 3px; 
+        margin: 1px !important;
+        border: 1px !important;
+    }
+    .table tbody{
+        padding:1px 3px; 
+        margin: 1px !important;
+        border: 1px !important;
+    }
+    td .btn{
+        font-size:6px;
+        padding:0px 2px;  
+        margin: 0px;
+    }
+    .btn h6{
+        font-size:8px;
+        padding:0px 1px !important; 
+        margin: 0px !important;
+        border: 0px !important;
+    }
+}

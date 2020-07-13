@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Employee List - Remove</title>
+{% endblock %}
+
+{% block body %}
+
+{% if emp_count > 0 %}
+
+<div class="w3-container">
+    <h5 style="text-align:center;"><b>Employees in the office on this date:</b></h5>
+    <ul class="w3-ul">
+      {% for key, value in dict.items() %}
+        {% if value | int > maxEmpCount %}
+          <li id="red"><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} </li>
+        {% else %}
+        <li><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  
+{% endif %}
+
+<div class="container">
+    <main role="main">
+        <div class="jumbotron text-center mx-2 mb-3" style="background-color:#e3e3e3">
+            <div class="col-sm-8 mx-auto">
+                <h3>Employee List</h3>               
+                <h6>{{ emp_count }} submitted employee requests</h6>
+                <hr class="my-4 pb-2">
+
+                <table class="table table-striped mx-auto">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col"><h6>Name</h6></th>
+                        <th scope="col"><h6>Departament</h6></th>
+                        <th scope="col"><h6>Date</h6></th>
+                        <th scope="col"><h6>Option</h6></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for emp in employees %}
+                            <tr>
+                                <td><h6>{{ emp.name }}</h6></td>
+                                <td><h6>{{ emp.dept }}</h6></td>
+                                <td><h6>{{ emp.date }}</h6></td>
+                                <td>
+                                    <a class="btn btn-warning btn-sm" href="/employeeListRemove/delete/{{emp.id}}"><h6>Delete entry</h6></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {% if emp_count > 0 %}
+                    <a class="btn btn-warning btn-sm mb-1" href="/employeeListRemove/delete/all">Delete all employees records</a>
+                {% endif %}
+                <hr class="my-4 pb-2">
+                <hr class="my-4 pb-2">
+                <form action="/adminManagement">
+                  <div class="mx-2 col-1">
+                      <input class="btn btn-success btn-sm" type="submit" value="Go back to Admin Management">
+                  </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
+    <link rel="icon" href="../static/img/schedule.png" sizes="32x32">
+
+    {% block head %} {% endblock %}
+</head>
+
+<body class="text-center">
+    <nav class="navbar navbar-light style="background-color: #e3f2fd" id="bar">
+        <a class="navbar-brand" href="/">Back-To-Office App
+            <img src="../static/img/schedule.png"
+            width="28" height="28" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="nav-link" href="/about">About This App<span class="sr-only">(current)</span></a>
+    </nav>
+    <br>
+    <div class="container">
+        {% block body %} {% endblock %}
+    </div>
+    <br>
+    <nav class="navbar fixed-bottom navbar-light bg-light" id="bar">
+        <a href="https://www.linkedin.com/in/dangabrielp/" target="_blank" class="float-left"><img src="https://img.icons8.com/color/48/000000/linkedin.png" class="icon" width="40" height="40"></a>
+        <a>© Dan-Gabriel Pintoiu</a>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="static/js/main.js"></script>
+</body>
+
+
+</html>

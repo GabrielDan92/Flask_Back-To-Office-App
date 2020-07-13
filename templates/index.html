@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+<main role="main">
+    <div class="jumbotron text-center mx-2 mb-5" style="background-color:#e3e3e3">
+        <div class="col-sm-8 mx-auto">
+            <h1>Home Page</h1>
+            <hr class="my-4 pb-2">
+                <p>Once the Covid-19 lockdown around the world eases (hopefully sooner than later), some of you will be in charge of gradually bringing the staff back into the office. But how do you keep track of everyone coming to work and if the maximum number of colleagues in the office for a given day has been reached?</p>
+                <p><b>[suspense noises in the background]</b></p>
+
+            <form action="/userManagement">
+                <div class="mx-2 mb-3">
+                    <input class="btn btn-primary btn-sm" type="submit" value="User View">
+                </div>
+            </form>
+            <form action="/adminManagement">
+                <div class="mx-2 mb-3">
+                    <input class="btn btn-success btn-sm" type="submit" value="Admin View">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</main>
+{% endblock %}
