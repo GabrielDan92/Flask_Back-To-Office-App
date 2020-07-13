@@ -15,7 +15,7 @@
 * HTML, CSS and JavaScript for the Front-End part. Javascript was mostly used for changing div elements' sizes or even hide them based on particular actions done by the user
 * jQuery AJAX for ```POST``` requests
 * the Bootstrap framework for almost all styling properties
-* W3.CSS for the employee tables <p>
+* W3.CSS for the employee tables
 * (!) An important change that can be done to the app is migrating from SQLite3 to PostgreSQL, if not for the added complexity, security and whatnot, then simply by being easier to integrate with other platforms like Heroku if that's your thing (Heroku doesn't support SQLite3 databases, more details <a href="https://devcenter.heroku.com/articles/sqlite3">here)
 
 ### I've built the app with two user profile types in mind:
