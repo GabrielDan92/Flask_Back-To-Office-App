@@ -13,9 +13,18 @@
     <ul class="w3-ul">
       {% for key, value in dict.items() %}
         {% if value | int > maxEmpCount %}
-          <li id="red"><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} </li>
+        <li id="red">
+            <span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> 
+            <div style="text-align:left;"> {{ key }} </div>
+            <div style="text-align:center;">
+              <span>The maximum number of employees in the office has been reached. </span>
+            </div> 
+          </li>
         {% else %}
-        <li><span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> {{ key }} </li>
+        <li>
+            <span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> 
+            <div style="text-align:left;"> {{ key }} </div> 
+        </li>
         {% endif %}
       {% endfor %}
     </ul>
