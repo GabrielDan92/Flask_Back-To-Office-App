@@ -14,7 +14,7 @@
   * Python functions that initialize a blank database with the declared models if the database is not found when the servers starts, or create default values in the db (eg: if the admin profile is not created already), in order to prevent errors at run time
 * HTML, CSS and JavaScript for the Front-End part. Javascript was mostly used for changing div elements' sizes or even hide them based on particular actions done by the user
 * jQuery AJAX for ```POST``` requests
-* the Bootstrap framework for almost all styling properties
+* The Bootstrap framework for almost all styling properties
 * W3.CSS for the employee tables
 * (!) An important change that can be done to the app is migrating from SQLite3 to PostgreSQL, if not for the added complexity, security and whatnot, then simply by being easier to integrate with other platforms like Heroku if that's your thing (Heroku doesn't support SQLite3 databases, more details <a href="https://devcenter.heroku.com/articles/sqlite3">here)
 
