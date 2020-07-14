@@ -11,7 +11,7 @@ from datetime import datetime
 # create a date entry variable to be used as default value in the db table 'employee'
 # in case the user doesn't add it when submitting the form
 today = datetime.today()
-month = today.strftime("%B")
+month = today.strftime("%B") 
 day = today.strftime("%d")
 defaultDate = month + "-" + day
 
