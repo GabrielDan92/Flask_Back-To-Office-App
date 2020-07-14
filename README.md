@@ -4,7 +4,7 @@
 ## Why did I built this app? 
   Once the Covid-19 lockdown around the world eases (hopefully sooner than later), some of you will be in charge of gradually bringing the staff back into the office. But how do you keep track of everyone coming to work and if the maximum number of colleagues in the office for a given day has been reached? I believe  there is an easier way to centralize and keep track of every staff member that will come to the office than just counting email requests from colleagues or try to use a shared Excel solution that comes with its own drawbacks. <p>
   By all means, you could try to use shared Excel workbooks saved on shared drives, OneDrive, SharePoint or even use Excel Online as an alternative, but only the ones who've used these solutions know what hassle it is to have a large number of users using the same file at the same time. From users editing the same cell, locked out users while the file is in use, corrupted or missing data, to users hiding or moving columns, formulas, there are a lot of things that can go wrong. <p>
-    And that's how the <b>Back-To-Office App</b> came into existence. :) <p>
+    And that's how the <b>Back-To-Office App</b> came into existence. <p>
   
 ## How did I built the app and what tools did I use?
 * Flask
