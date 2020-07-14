@@ -36,6 +36,14 @@ body {
   }
 
 @media (max-width: 768px) {
+    #bar a{
+        font-size:14px;     
+        height: 24px;
+    }
+    #bar img{    
+        height: 20px;
+        width: 20px;
+    }
     #gif{
         width: 300px;
         height: auto;  
