@@ -188,6 +188,12 @@ def employees():
         empName = request.form["name"]
         department = request.form["dept"]
         date = request.form["dateElement"]
+        if len(empName) > 30:
+            flash("Please add maximum 30 characters in the name field!", "warning")
+            return redirect(request.path)
+        elif len(department) > 30:
+            flash("Please add maximum 30 characters in the department field!", "warning")
+            return redirect(request.path)
         if date == " " or date == "":
             date = defaultDate
         newEmployee = employee(name=empName, dept=department, date=date)
