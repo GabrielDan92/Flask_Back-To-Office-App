@@ -22,6 +22,17 @@
         <div class="mb-3">
             <button type="button" class="btn btn-danger btn-sm" disabled>Max # of employees in the office - Current Limit: {{ maxEmpCount }}</button>
         </div>
+
+        <div class="mb-3">
+            {% with messages = get_flashed_messages(category_filter=["warning"]) %}
+            {% if messages %}
+              {% for message in messages %}
+                <br>
+                <span> {{message}} </span>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
         
     </div>
 </div>
