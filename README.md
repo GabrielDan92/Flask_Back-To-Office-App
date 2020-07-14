@@ -1,4 +1,4 @@
-##### The fully functional website is currently hosted on Python Anywhere's platform, and can be found <a href="http://gabrieldan.pythonanywhere.com/">here</a>.
+##### The fully functional website is currently hosted on Python Anywhere's platform, and can be found <a href="https://gabrieldan.pythonanywhere.com/">here</a>.
 <p>
   
 ## Why did I built this app? 
