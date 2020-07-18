@@ -2,7 +2,7 @@
 <b>July 18 update (v2.0): </b>
 * GDPR compliance update for the user view
 * Removed the option to add presence requests for days where the threshold has been reached. After the update, if an user tries to submit a request for a fully booked day, an error message will be returned and the request will no longer be saved to the database.
-* The dropdowns used for adding the month and day have been replaced with an ```<input type="date">``` object. The documentation can be found on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">Developer Mozilla's website</a>.
+* The dropdown lists used for adding the month and day have been replaced with an ```<input type="date">``` object. The documentation can be found on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">Developer Mozilla's website</a>.
 * CSS updates for different ```@media (max-width)``` sizes and other UI updates. <p>
 ## Why did I built this app? 
   Once the Covid-19 lockdown around the world eases (hopefully sooner than later), some of you will be in charge of gradually bringing the staff back into the office. But how do you keep track of everyone coming to work and if the maximum number of colleagues in the office for a given day has been reached? I believe  there is an easier way to centralize and keep track of every staff member that will come to the office rather than just counting email requests from colleagues or try to use a shared Excel solution that comes with its own drawbacks. <p>
