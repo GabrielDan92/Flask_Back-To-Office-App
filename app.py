@@ -8,13 +8,6 @@ from flask_login import UserMixin, login_required, current_user, LoginManager, l
 from sqlalchemy import func
 from datetime import datetime
 
-# create a date entry variable to be used as default value in the db table 'employee'
-# in case the user doesn't add it when submitting the form
-today = datetime.today()
-month = today.strftime("%B") 
-day = today.strftime("%d")
-defaultDate = month + "-" + day
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "bF-xcay-xffp-x0bc--xb53xeaxfc8-xc8y-xcb-xe4"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///employees.db"
@@ -28,7 +21,7 @@ class employee(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
     dept = db.Column(db.String(50), nullable = False)
-    date = db.Column(db.String(50), nullable = False, default = defaultDate)
+    date = db.Column(db.String(50), nullable = False)
     created_date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
 
     def __repr__(self):
@@ -50,9 +43,8 @@ class admin(db.Model, UserMixin):
 db.create_all()
 db.session.commit()
 
-# create helping lists to iterate over 
+# create a helping list to iterate over later
 all_employees = []
-monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 # function that returns the max employee counter; the function will be called by multiple flask routes
 # if there isn't a max value set up, returns '0' as the default value
@@ -69,11 +61,11 @@ def maxEmp():
 
     return employeeCounter
 
-# function that returns a dict with the retrieved values
-# iterates through the dict to remove the square brackets retreived by the SQLAlchemy query
+# function that returns a dict with all the db records, grouping by date and counting it
 def empDict():
     group = employee.query.with_entities(employee.date, func.count(employee.date)).group_by(employee.date).all()
     dict = {}
+    # iterates through the dict to remove the square brackets returned with the SQLAlchemy query
     for i in range(len(group)):
         dict[group[i][0]] = []
         dict[group[i][0]].append(group[i][1])
@@ -83,6 +75,14 @@ def empDict():
         newValue = newValue.replace("]", "")
         dict[key] = newValue
     return dict
+
+# retrieve all records for a given employee
+# case insensitive search
+def currentEmpRecords(employeeName):
+    currentEmployee = employee.query.filter(employee.name.ilike(employeeName)).all()
+    employeeDict = {}
+    employeeDict = currentEmployee
+    return employeeDict
 
 @login_manager.user_loader
 def load_user(admin_id):
@@ -124,18 +124,30 @@ def about():
 def loginPage():
     return render_template("login.html")
 
+@app.route("/individualRemove/<string:name>")
+def indRem(name):
+    currentEmployee = currentEmpRecords(name)
+    emp_count = len(currentEmployee)
+    employeeCounter = maxEmp()
+    dict = empDict()
+    return render_template("individualRemove.html", employees=currentEmployee, emp_count=emp_count, dict=dict, maxEmpCount = employeeCounter, name=name)
+
 @app.route("/userManagement")
 def userManagement():
+    emp_count = employee.query.count()
+    dict = empDict()
     employeeCounter = maxEmp()
-    return render_template("userManagement.html", months = monthList, maxEmpCount = employeeCounter)
+
+    return render_template("userManagement.html", maxEmpCount = employeeCounter, emp_count=emp_count, dict=dict)
 
 @app.route("/adminManagement")
 @login_required
 def adminManagement():
     employeeCounter = maxEmp()
-    return render_template("adminManagement.html", months = monthList, maxEmpCount = employeeCounter, name=current_user.username)
+    return render_template("adminManagement.html", maxEmpCount = employeeCounter, name=current_user.username)
 
 @app.route("/employeeList")
+@login_required
 def empList():
     all_employees = employee.query.order_by(employee.created_date).all()
     emp_count = employee.query.count()
@@ -143,15 +155,6 @@ def empList():
     employeeCounter = maxEmp()
 
     return render_template("employeeList.html", employees=all_employees, emp_count=emp_count, dict=dict, maxEmpCount = employeeCounter)
-
-@app.route("/employeeListUser")
-def empListUser():
-    all_employees = employee.query.order_by(employee.created_date).all()
-    emp_count = employee.query.count()
-    dict = empDict()
-    employeeCounter = maxEmp()
-    
-    return render_template("employeeListUser.html", employees=all_employees, emp_count=emp_count, dict=dict, maxEmpCount = employeeCounter)
 
 @app.route("/employeeListRemove")
 @login_required
@@ -163,14 +166,18 @@ def empListRemoveList():
 
     return render_template("employeeListRemove.html", employees=all_employees, emp_count=emp_count, dict=dict, maxEmpCount = employeeCounter)
 
-@app.route("/employeeListRemove/delete/<int:id>")
-def empListRemove(id):
+@app.route("/employeeListRemove/delete/<int:id>/<string:name>")
+@app.route("/individualRemove/delete/<int:id>/<string:name>")
+def empListRemove(id, name):
     # delete the selected employee from the db
     emp = employee.query.get_or_404(id)
     db.session.delete(emp)
     db.session.commit()
 
-    return redirect("/employeeListRemove")
+    if request.path.split('/')[1] == "employeeListRemove":
+        return redirect("/employeeListRemove")
+    else:
+        return redirect("/" + request.path.split('/')[1] + "/" + name)
 
 @app.route("/employeeListRemove/delete/all")
 def empListRemoveAll():
@@ -187,7 +194,8 @@ def employees():
     if request.method == "POST":
         empName = request.form["name"]
         department = request.form["dept"]
-        date = request.form["dateElement"]
+        date = request.form["date"]
+        print(date)
         if len(empName) > 30:
             flash("Please add maximum 30 characters in the name field!", "warning")
             return redirect(request.path)
@@ -195,19 +203,30 @@ def employees():
             flash("Please add maximum 30 characters in the department field!", "warning")
             return redirect(request.path)
         if date == " " or date == "":
-            date = defaultDate
+            flash("Please add a date in the date field!", "warning")
+            return redirect(request.path)
+
+        dict = empDict()
+        employeeCounter = maxEmp()
+        try:
+            if int(dict.get(date)) >= int(employeeCounter):
+                flash(date + " is fully booked. Please select another day!", "warning")
+                return redirect(request.path)
+        except:
+            pass
+
         newEmployee = employee(name=empName, dept=department, date=date)
         db.session.add(newEmployee)
         db.session.commit()
-        print(str(empName) + ", dept: " + str(department) + " has been added to the db")
-        return redirect("/")
+        print("Employee: " + str(empName) + ", dept: " + str(department) + ", date: " + str(date) + " has been added to the database.")
+        return redirect(request.path)
     else:
         all_employees = employee.query.order_by(employee.created_date).all()
         return render_template("index.html", employees=all_employees)
 
 @app.route("/employeeCount", methods = ["GET", "POST"])
 def employeeCount():
-    # read the retreived jquery ajax post request
+    # read the retreived jQuery Ajax post request
     # add the maximum employees threshold to the db
     if request.method == "POST":
         db.session.query(empCount).delete()
