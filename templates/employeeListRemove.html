@@ -7,29 +7,32 @@
 {% block body %}
 
 {% if emp_count > 0 %}
-
-<div class="w3-container">
+<hr>
+  <div class="w3-container-user">
     <h5 style="text-align:center;"><b>Employees in the office on this date:</b></h5>
     <ul class="w3-ul">
       {% for key, value in dict.items() %}
-        {% if value | int > maxEmpCount %}
-        <li id="red">
-            <span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> 
-            <div style="text-align:left;"> {{ key }} </div>
+        {% if value | int >= maxEmpCount %}
+          <li id="red">
+            <div style="text-align:right;">
+              <span><h6> {{ value }} Employees </h6></span> 
+            </div>
+            <div style="text-align:left;"><h6> {{ key }} </h6></div>
             <div style="text-align:center;">
-              <span>The maximum number of employees in the office has been reached. </span>
+              <span><h6> The maximum number of employees in the office has been reached. </h6></span>
             </div> 
           </li>
         {% else %}
         <li>
-            <span class="w3-badge w3-right w3-margin-right w3-green"> {{ value }} </span> 
-            <div style="text-align:left;"> {{ key }} </div> 
+          <div style="text-align:right;">
+            <span><h6> {{ value }} Employees </h6></span>  
+          </div>
+          <div style="text-align:left;"><h6> {{ key }} </h6></div> 
         </li>
         {% endif %}
       {% endfor %}
     </ul>
   </div>
-  
 {% endif %}
 
 <div class="container">
@@ -50,28 +53,33 @@
                     </tr>
                     </thead>
                     <tbody>
+                      {% block delete %}
                         {% for emp in employees %}
                             <tr>
                                 <td><h6>{{ emp.name }}</h6></td>
                                 <td><h6>{{ emp.dept }}</h6></td>
                                 <td><h6>{{ emp.date }}</h6></td>
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="/employeeListRemove/delete/{{emp.id}}"><h6>Delete entry</h6></a>
+                                    <a class="btn btn-outline-secondary btn-sm" href="/employeeListRemove/delete/{{emp.id}}/{{emp.name}}"><h6>Delete entry</h6></a>
+                                  
                                 </td>
                             </tr>
-                        {% endfor %}
+                          {% endfor %}
+                        {% endblock %}
                     </tbody>
                 </table>
 
+                {% block button %}
                 {% if emp_count > 0 %}
-                    <a class="btn btn-warning btn-sm mb-1" href="/employeeListRemove/delete/all">Delete all employees records</a>
+                    <a class="btn btn-outline-secondary btn-m mb-1" href="/employeeListRemove/delete/all">Delete all employees records</a>
                 {% endif %}
-                <hr class="my-4 pb-2">
                 <hr class="my-4 pb-2">
                 <form action="/adminManagement">
                   <div class="mx-2 col-1">
-                      <input class="btn btn-success btn-sm" type="submit" value="Go back to Admin Management">
+                      <input class="btn btn-outline-secondary btn-sm" type="submit" value="Go back to Admin Management">
                   </div>
+                </form>
+                {% endblock %}
             </div>
         </div>
     </main>
