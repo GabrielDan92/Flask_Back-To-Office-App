@@ -1,5 +1,5 @@
 ##### The fully functional website is currently hosted on Python Anywhere's platform, and can be found <a href="https://gabrieldan.pythonanywhere.com/" target="_blank">here</a>.
-<b>July 18 update: </b>
+<b>July 18 update (v2.0): </b>
 * GDPR compliance update for the user view
 * Removed the option to add presence requests for days where the threshold has been reached. After the update, if an user tries to submit a request for a fully booked day, an error message will be returned and the request will no longer be saved to the database.
 * The dropdowns used for adding the month and day have been replaced with an ```<input type="date">``` object. The documentation can be found on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">Developer Mozilla's website</a>.
