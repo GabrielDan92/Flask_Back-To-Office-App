@@ -1,0 +1,24 @@
+{% extends "employeeListRemove.html" %}
+
+{% block head %}
+<title>Employee List - Remove</title>
+{% endblock %}
+
+{% block delete %}
+{% for emp in employees %}
+        <tr>
+        <td><h6>{{ emp.name }}</h6></td>
+        <td><h6>{{ emp.dept }}</h6></td>
+        <td><h6>{{ emp.date }}</h6></td>
+        <td>
+                <a class="btn btn-outline-secondary btn-sm" href="/individualRemove/delete/{{emp.id}}/{{emp.name}}"><h6>Delete entry</h6></a>
+        </td>
+        </tr>
+{% endfor %}
+{% endblock %}
+
+{% block button %}
+{% if emp_count < 1 %}
+        <span>No records found for {{ name }}.</span> 
+{% endif %}
+{% endblock %}
