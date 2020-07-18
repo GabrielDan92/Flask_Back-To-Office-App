@@ -17,6 +17,7 @@ body {
 
 .form-control {
     text-align: center;
+    margin: auto;
 }
 
 #red{
@@ -32,8 +33,12 @@ body {
     width: 100%;
     max-width: 330px;
     padding: 15px;
-    margin: 0 auto;
+    margin: auto;
   }
+
+.w3-container-user{
+    border-style: solid
+}
 
 @media (max-width: 768px) {
     #bar a{
@@ -48,16 +53,18 @@ body {
         width: 300px;
         height: auto;  
     }
-    
     .btn{
-        font-size:10px;
+        font-size:14px;
         padding:2px 4px;  
         margin: 0px;
+        height: auto;
     }
     .form-control{
         font-size:10px;
         padding:2px 4px;  
-        margin: 0px;
+        width: 150px;
+        margin: auto;
+        text-align: center;
     }
     #alwaysOnMenu h3{
         font-size:12px;
@@ -65,7 +72,7 @@ body {
     }
     #userForm h3{
         font-size:12px;
-        padding:3px 5px;    
+        padding:2px 4px;    
     }
     #userForm label{
         font-size:12px;
@@ -119,23 +126,41 @@ body {
         margin: 2px !important;
         border: 2px !important;
     }
+    span{
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 479px) {
     .btn{
-        font-size:8px;
+        font-size:12px;
         padding:1px 3px;  
-        margin: 0px;
+        height: auto;
+        text-align: center;
+        margin: auto;
     }
     .form-control{
         font-size:8px;
         padding:1px 3px;  
-        margin: 0px;
+        width: 80px;
+        text-align: center;
+        margin: auto;
     }
     #alwaysOnMenu h3{
         font-size:10px;
         padding:2px 4px;    
     }
+    /* #userForm{
+        padding: 2px 2px;
+    }
+    #alwaysOnMenu{
+        padding: 2px 2px;
+    }
+    .col-8{
+        padding: 2px 2px !important;
+        margin: 0px !important;
+        border: 1px !important;
+    } */
     #userForm h3{
         font-size:10px;
         padding:2px 4px;    
