@@ -18,24 +18,24 @@
                         <hr class="my-4 pb-2">
 
                         <div class="mb-3">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="visible()">Add a new presence day</button>
+                            <button type="button" class="btn btn-outline-secondary btn-m" onclick="visible()">Add a new presence day</button>
                         </div>
 
                         <div class="mb-3">
-                            <button type="button" class="btn btn-warning btn-sm" onclick="location.href='/employeeListRemove';">Delete employee entry</button>
+                            <button type="button" class="btn btn-outline-secondary btn-m" onclick="location.href='/employeeListRemove';">Delete employee entry</button>
                         </div>
 
                         <div class="mb-3">
-                            <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/employeeList';">See all presence requests</button>
+                            <button type="button" class="btn btn-outline-secondary btn-m" onclick="location.href='/employeeList';">See all presence requests</button>
                         </div>
 
                         <div class="mb-3">
-                            <button type="button" class="btn btn-danger btn-sm" onclick="setMax()">Max # of employees in the office - Current Limit: {{ maxEmpCount }}</button>
+                            <button type="button" class="btn btn-outline-danger btn-m" onclick="setMax()">Max # of employees in the office - Current Limit: {{ maxEmpCount }}</button>
                         </div>
 
                         <div class="input-group mb-3" id="max">
                             <div class="input-group-prepend">
-                              <button class="btn btn-outline-secondary btn-sm" onclick="setMaxDone()" type="button">Submit</button>
+                              <button class="btn btn-outline-secondary btn-m" onclick="setMaxDone()" type="button">Submit</button>
                             </div>
                             <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="max-text">
                         </div>
@@ -47,14 +47,14 @@
                             {% if messages %}
                               {% for message in messages %}
                                 <br>
-                                <span> {{message}} </span>
+                                <h6><span> {{message}} </span></h6>
                               {% endfor %}
                             {% endif %}
                           {% endwith %}
                         </div>
 
                         <div class="mb-3">
-                            <button type="button" class="btn btn-info btn-sm" onclick="location.href='/logout';">Log Out</button>
+                            <button type="button" class="btn btn-outline-secondary btn-m" onclick="location.href='/logout';">Log Out</button>
                         </div>
                         
                     </div>
@@ -81,59 +81,25 @@
                             <br>
 
                             <label for="validationDate">Calendar Day</label>
-                            <input class="form-control date" type="text" name="date" id="validationDate"
-                                placeholder="Selected Date" required disabled>
-                            <br>
+                            <input class="form-control" type="date" id="validationDate" name="date" value="" min="2020-01-01" max="2022-12-31" required>
 
-                            <input class="form-control date" type="text" name="dateElement" id="validationDate2"
-                            placeholder="Selected Date" required>
-                            
-
-                            <label for="validationMonth">Month </label>
-                            <div class="btn-group">
-                                <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="month">
-                                    Select the month
-                                </button>
-                                <div class="dropdown-menu">
-                                    {% for month in months %}
-                                        <a class="dropdown-item" href="#" onclick="visibleMonth('{{ month }}')">{{ month }}</a>
-                                    {% endfor %}
-                                </div>
-                            </div>  
-                            <br>
-
-                            <label for="validationDay">Day </label>
-                                <div class="btn-group">
-                                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="day">
-                                        Select the day
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        {% for i in range (1, 32) %}
-                                            <a class="dropdown-item" href="#" onclick="visibleDay( '{{ i }}' )"> {{ i }}</a>
-                                        {% endfor %}
-                                    </div>
-                                </div> 
-
-                            <br>
                             <br>
                             <br>
 
                             <div class="mb-3">
-                                <input class="btn btn-success btn-sm" type="submit" value="Add the presence day">
+                                <button class="btn btn-outline-secondary btn-m" type="submit">Add the presence day</button>
                             </div>
-                            
-                            <input class="btn btn-danger btn-sm" value="Cancel" onclick="notVisible()"">
+                            <div class="mb-3">
+                                <button class="btn btn-outline-secondary btn-m" onclick="notVisible()">Cancel</button>
+                            </div>
+
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
-<form action="/">
-    <div class="mx-2">
-        <input class="btn btn-success btn-sm" type="submit" value="Go back home">
-    </div>
-</form>
 
 {% endblock %}
