@@ -12,15 +12,22 @@
         <hr class="my-4 pb-2">
 
         <div class="mb-3">
-            <button type="button" class="btn btn-primary btn-sm" onclick="visible()">Add a new presence day</button>
+            <button type="button" class="btn btn-outline-secondary btn-m" onclick="visible()">Add a new presence day</button>
         </div>
 
         <div class="mb-3">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/employeeListUser';">See all presence requests</button>
+          <button type="button" class="btn btn-outline-secondary btn-m" onclick="setEmp()"">Remove your presence day(s)</button>
         </div>
 
+        <div class="mb-3" id="empName">
+            <button class="mb-3 btn btn-outline-secondary btn-m" onclick="setEmpDone()" type="button">Submit</button>
+            <input type="text" class="form-control" placeholder="Add your first and last name here" aria-label="" aria-describedby="basic-addon1" id="max-text" required>
+        </div>
+
+        <span id="empCheck"><h5>Please add your name before submitting</h5></span> 
+
         <div class="mb-3">
-            <button type="button" class="btn btn-danger btn-sm" disabled>Max # of employees in the office - Current Limit: {{ maxEmpCount }}</button>
+            <button type="button" class="btn btn-outline-danger btn-m" disabled>Max # of employees in the office: <b>{{ maxEmpCount }}</b><em> *The limit can be changed by an admin.* </em></button>
         </div>
 
         <div class="mb-3">
@@ -35,5 +42,36 @@
         </div>
         
     </div>
+
+    <!-- depending on the employee counter limit, generate a red highlighted row or a regular one -->
+  {% if emp_count > 0 %}
+  <hr>
+    <div class="w3-container-user">
+      <h5 style="text-align:center;"><b>Employees in the office on this date:</b></h5>
+      <ul class="w3-ul">
+        {% for key, value in dict.items() %}
+          {% if value | int >= maxEmpCount %}
+            <li id="red">
+              <div style="text-align:right;">
+                <span><h6> {{ value }} Employees </h6></span> 
+              </div>
+              <div style="text-align:left;"><h6> {{ key }} </h6></div>
+              <div style="text-align:center;">
+                <span><h6> The maximum number of employees in the office has been reached. </h6></span>
+              </div> 
+            </li>
+          {% else %}
+          <li>
+            <div style="text-align:right;">
+              <span><h6> {{ value }} Employees </h6></span>  
+            </div>
+            <div style="text-align:left;"><h6> {{ key }} </h6></div> 
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
 </div>
 {% endblock %}
