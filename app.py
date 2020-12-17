@@ -16,6 +16,9 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
+#acest comentariu este adaugat de Teodor
+
+
 # table models
 class employee(db.Model):
     id = db.Column(db.Integer, primary_key = True)
